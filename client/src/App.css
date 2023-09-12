@@ -1,0 +1,81 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+}
+
+.tot{
+	font-size: 1.2rem;
+	height: 200px;
+	width: 100%;
+	font-weight: bold;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+
+}
+
+.square{
+	height: 250px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	width: 300px;
+	margin: 5%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.squaree{
+	height: 250px;
+	width: 300px;
+	margin: 5%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.square> ul li {
+	max-width: 200px;
+}
+
+.numero{
+	font-size: 2rem;
+	font-weight: 300;
+	color: rgb(105, 105, 199);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+
+.tab{
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+	height: 300px;
+	align-items: center;
+	border-radius: 10px;
+	overflow-y: scroll;
+	color: #fff;
+	background-color:  #084d6e;
+}
+.tab>h4{
+	padding: 12px;
+}
+.conteudo{
+	padding: top 50px; 
+}
+.prod{
+
+	overflow-y: scroll;
+}
+
+
+#graf{
+	justify-content: center;
+	align-items: center;
+	margin-top: 40%;
+}
+
+
+/************************************HOME***************************************************/
