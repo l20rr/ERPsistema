@@ -137,7 +137,8 @@ export default function Cadastrar() {
                       onChange={e => setTipo(e.target.value)}
                     >
                       <MenuItem value={1}>Administrador</MenuItem>
-                      <MenuItem value={3}>Dono</MenuItem>
+                      <MenuItem value={2}>Funcionário</MenuItem>
+                      
                      
                       
                     </Select>
