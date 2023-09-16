@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const DataSchema = new mongoose.Schema({
     nome_usuario:String,
     email_usuario:String,
-    tipo_usuario:{type:Number, default:3},
+    tipo_usuario:{type:Number, default:2},
     senha_usuario:String,
 },{
     timestamps:true
@@ -25,15 +25,14 @@ DataSchema.pre('findOneAndUpdate', function (next){
     next();
 });
 
-DataSchema.methods.isCorrectPassword = function (password, callback ){
-    bcrypt.compare(password,this.senha_usuario,function(err,same){
-        if(err){
-            callback(err);
-        }else{
-            callback(err, same);
-        }
-    })
-}
+DataSchema.methods.isCorrectPassword = async function (password) {
+    try {
+      const isMatch = await bcrypt.compare(password, this.senha_usuario);
+      return isMatch;
+    } catch (error) {
+      throw error;
+    }
+  };
 
 const usuarios = mongoose.model('Usuarios', DataSchema)
 module.exports = usuarios
