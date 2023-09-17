@@ -9,12 +9,12 @@ module.exports = {
         res.json(user);
     },
     async create(req,res){
-        const {nome_usuario, email_usuario, tipo_usuario,senha_usuario} = req.body;
+        const {nome_usuario, email_usuario, tipo_usuario,senha_usuario,iduser} = req.body;
         let data = {};
         let user =  await Usuario.findOne({email_usuario});
         
         if(!user){
-            data = {nome_usuario,email_usuario,tipo_usuario,senha_usuario};
+            data = {nome_usuario,email_usuario,tipo_usuario,senha_usuario, iduser };
 
             user = await Usuario.create(data);
             return res.status(200).json(user);

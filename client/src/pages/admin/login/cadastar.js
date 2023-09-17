@@ -58,10 +58,10 @@ export default function Cadastrar() {
       email_usuario:email,
       senha_usuario:senha,
       tipo_usuario:tipo}
-      
       console.log(data)
 
       if(nome!==''&&email!==''&&senha!==''&&tipo!==''){
+    
         const response = await api.post('/api/usuarios',data);
 
         if(response.status===200){
@@ -127,6 +127,7 @@ export default function Cadastrar() {
                    onChange={e => setEmail(e.target.value)}
                 />
               </Grid>
+  
                <Grid item xs={12}>
                <FormControl className={classes.formControl} style={{display:'hidden'}}>
                     <InputLabel id="labelTipo">Tipo</InputLabel>

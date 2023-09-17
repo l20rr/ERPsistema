@@ -8,12 +8,12 @@ module.exports = {
         res.json(product);
     },
     async create(req,res){
-        const {nome_produto, descricao_produto, preco_produto,qtd_produto, numero_produto, valor_produto} = req.body;
+        const {nome_produto, descricao_produto, preco_produto,qtd_produto, numero_produto, valor_produto,iduser} = req.body;
         let data = {};
         let product =  await Produto.findOne({nome_produto});
         
         if(!product){
-            data ={nome_produto, descricao_produto, preco_produto,qtd_produto, numero_produto, valor_produto};
+            data ={nome_produto, descricao_produto, preco_produto,qtd_produto, numero_produto, valor_produto,iduser};
 
             product = await Produto.create(data);
             return res.status(200).json(product);

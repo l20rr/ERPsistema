@@ -8,7 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import MenuAdmin from '../../../components/menu-admin';
 
-
+import { getIdUsuario } from '../../../services/auth';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -35,6 +35,7 @@ export default function UsuarioCadastrar() {
   const [email , setEmail] = useState('');
   const [senha , setSenha] = useState('');
   const [tipo , setTipo] = useState('');
+  const[iduser , setIduser] = useState(getIdUsuario());
 
   async function handleSubmit(){
 
@@ -42,11 +43,14 @@ export default function UsuarioCadastrar() {
       nome_usuario:nome,
       email_usuario:email,
       senha_usuario:senha,
-      tipo_usuario:tipo}
+      tipo_usuario:tipo,
+      iduser:iduser,
+    }
       
       console.log(data)
 
       if(nome!==''&&email!==''&&senha!==''&&tipo!==''){
+        setIduser(getIdUsuario());
         const response = await api.post('/api/usuarios',data);
 
         if(response.status===200){

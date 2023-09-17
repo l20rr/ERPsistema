@@ -14,6 +14,7 @@ import Button from '@material-ui/core/Button';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import SaveIcon from '@material-ui/icons/Save';
 import api from '../../../services/api'
+import { getIdUsuario } from '../../../services/auth';
 
 const useStyles = makeStyles((theme) => ({
   root: {display: 'flex',},
@@ -32,7 +33,8 @@ export default function ProdutoCadastrar() {
   const [descricaoProduto , setDescricao] = useState('');
   const [precoProduto , setPeco] = useState('');
   const [qtdProduto , setQtd] = useState('');
-  const [valorProduto, setValor] = useState('')
+  const [valorProduto, setValor] = useState('');
+  const[iduser , setIduser] = useState(getIdUsuario());
  
   async function handleSubmit(){
 
@@ -42,10 +44,12 @@ export default function ProdutoCadastrar() {
       preco_produto:precoProduto,
       qtd_produto:qtdProduto,
       valor_produto:valorProduto,
+      iduser:iduser,
       }
     
 
       if(nomeProduto!==''&&descricaoProduto!==''&&precoProduto!==''&&qtdProduto!==''){
+        setIduser(getIdUsuario());
         const response = await api.post('/api/produtos',data);
 
         if(response.status===200){

@@ -7,6 +7,7 @@ const DataSchema = new mongoose.Schema({
     qtd_produto:{type:Number,default:0},
     numero_produto: {type:Number,default:0},
     valor_produto: Number,
+    iduser: String
 },{
     timestamps:true
 });
