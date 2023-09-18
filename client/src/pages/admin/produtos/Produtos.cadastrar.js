@@ -14,7 +14,7 @@ import Button from '@material-ui/core/Button';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import SaveIcon from '@material-ui/icons/Save';
 import api from '../../../services/api'
-import { getIdUsuario } from '../../../services/auth';
+import { getIdUsuario, getTipoUsuario } from '../../../services/auth';
 
 const useStyles = makeStyles((theme) => ({
   root: {display: 'flex',},
@@ -65,7 +65,10 @@ export default function ProdutoCadastrar() {
 
   }
   
-
+ 
+  if (getTipoUsuario() == 3) {
+    window.location.href='/admin/'
+  }
   
   return (
     <div className={classes.root}>

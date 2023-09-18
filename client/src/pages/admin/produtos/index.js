@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-
+import { getIdUsuario, getTipoUsuario } from '../../../services/auth';
 import MenuAdmin from '../../../components/menu-admin';
 import {useParams} from 'react-router-dom'
 import '../../../App.css'
@@ -69,6 +69,7 @@ export default function Produtos() {
       const response = await api.get("/api/produtos");
       setProdutos(response.data)
       setLoading(false);
+   
     }
     loadProdutos();
     
@@ -85,6 +86,11 @@ export default function Produtos() {
       }
     }
   }
+
+  function getType(){
+    getTipoUsuario();
+    console.log( getTipoUsuario())
+  }
    
   return (
     <div className={classes.root}>
@@ -95,10 +101,12 @@ export default function Produtos() {
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             <Grid item sm={12}>
+            {getTipoUsuario() != 3 ? (
             <Button style={{marginBottom:10, backgroundColor:" #084d6e", color:"#fff"}} variant="contained"  href={'/admin/produtos/cadastrar'}>
               <AddIcon />
               Cadastrar 
             </Button>
+            ):null}
             <Paper className={classes.paper}>
                 <h2>Listagem dos Produtos</h2>
                 <Grid container spacing={3}>
@@ -126,10 +134,16 @@ export default function Produtos() {
                             <TableCell align="center">{row.preco_produto}</TableCell>
                             <TableCell align="center">{row.qtd_produto - row.numero_produto}</TableCell>
                             <TableCell align="right">
-                              <ButtonGroup aria-label="outlined primary button group">
-                              <Button variant="contained" style={{ backgroundColor:" #084d6e", color:"#fff"}} href={'/admin/produtos/editar/'+row._id}><AutorenewIcon /> Vendas</Button>
-                            <Button variant="contained" color="secondary" onClick={() => handleDelete(row._id)}><ClearIcon /></Button>
-                        </ButtonGroup>
+                            <ButtonGroup aria-label="outlined primary button group">
+                              <Button variant="contained" style={{ backgroundColor: "#084d6e", color: "#fff" }} href={'/admin/produtos/editar/' + row._id}>
+                                <AutorenewIcon /> Vendas
+                              </Button>
+                              {getTipoUsuario() != 3 ? (
+                                <Button variant="contained" color="secondary" onClick={() => handleDelete(row._id)}>
+                                  <ClearIcon />
+                                </Button>
+                              ) : null}
+                            </ButtonGroup>
                       
       
                             </TableCell>

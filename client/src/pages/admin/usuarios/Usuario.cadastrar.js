@@ -8,7 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import MenuAdmin from '../../../components/menu-admin';
 
-import { getIdUsuario } from '../../../services/auth';
+import { getIdUsuario, getTipoUsuario } from '../../../services/auth';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -66,6 +66,10 @@ export default function UsuarioCadastrar() {
 
   }
   
+  if (getTipoUsuario() == 3) {
+    window.location.href='/admin/'
+  }
+
   return (
     <div className={classes.root}>
       
@@ -115,7 +119,7 @@ export default function UsuarioCadastrar() {
                       onChange={e => setTipo(e.target.value)}
                     >
                       <MenuItem value={1}>Administrador</MenuItem>
-                      <MenuItem value={2}>Funcionário</MenuItem>
+                      <MenuItem value={3}>Funcionário</MenuItem>
                      
                       
                     </Select>

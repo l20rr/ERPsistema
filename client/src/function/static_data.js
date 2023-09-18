@@ -21,7 +21,7 @@ export const getNomeTipo = (value) => {
     // return '';
 
     //SOLUÇÃO 3
-    var arr = ['Administrador','Gerente','Funcionário'];
+    var arr = ['Administrador','Funcionário','Funcionário'];
     return arr[value-1];
 };
 export const getNomeTipoLabel = (value) => {

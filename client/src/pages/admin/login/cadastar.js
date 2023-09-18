@@ -49,7 +49,7 @@ export default function Cadastrar() {
   const [nome , setNome] = useState('');
   const [email , setEmail] = useState('');
   const [senha , setSenha] = useState('');
-  const [tipo , setTipo] = useState('');
+ 
 
   async function handleSubmit(){
 
@@ -57,10 +57,10 @@ export default function Cadastrar() {
       nome_usuario:nome,
       email_usuario:email,
       senha_usuario:senha,
-      tipo_usuario:tipo}
+     }
       console.log(data)
 
-      if(nome!==''&&email!==''&&senha!==''&&tipo!==''){
+      if(nome!==''&&email!==''&&senha!==''){
     
         const response = await api.post('/api/usuarios',data);
 
@@ -127,24 +127,7 @@ export default function Cadastrar() {
                    onChange={e => setEmail(e.target.value)}
                 />
               </Grid>
-  
-               <Grid item xs={12}>
-               <FormControl className={classes.formControl} style={{display:'hidden'}}>
-                    <InputLabel id="labelTipo">Tipo</InputLabel>
-                    <Select
-                      labelId="labelTipo"
-                      id="tipo"
-                      value={tipo}
-                      onChange={e => setTipo(e.target.value)}
-                    >
-                      <MenuItem value={1}>Administrador</MenuItem>
-                      <MenuItem value={2}>Funcionário</MenuItem>
-                      
-                     
-                      
-                    </Select>
-                  </FormControl>
-               </Grid>
+
               <Grid item xs={12}>
                 <TextField
                   type="password"

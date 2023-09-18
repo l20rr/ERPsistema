@@ -25,6 +25,7 @@ import {getNomeTipo,getNomeTipoLabel} from '../../../function/static_data'
 import AddIcon from '@material-ui/icons/Add';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import ClearIcon from '@material-ui/icons/Clear';
+import { getIdUsuario, getTipoUsuario } from '../../../services/auth';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -79,6 +80,8 @@ export default function UsuariosListagem() {
     }
   }
   
+
+
   return (
     <div className={classes.root}>
       
@@ -88,10 +91,11 @@ export default function UsuariosListagem() {
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             <Grid item sm={12}>
+            {getTipoUsuario() != 3 ? (
             <Button style={{marginBottom:10, backgroundColor:" #084d6e", color:"#fff"}} variant="contained" color="primary" href={'/admin/usuarios/cadastrar'}>
               <AddIcon />
               Cadastrar
-            </Button>
+            </Button>) : null}
             <Paper className={classes.paper}>
                 <h2>Listagem de Usuários</h2>
                 <Grid container spacing={3}>
@@ -118,10 +122,18 @@ export default function UsuariosListagem() {
                             <TableCell align="center"><Chip label={getNomeTipo(row.tipo_usuario)} color={getNomeTipoLabel(row.tipo_usuario)}/></TableCell>
                             <TableCell align="center">{new Date(row.createdAt).toLocaleString('pt-br')}</TableCell>
                             <TableCell align="right">
-                              <ButtonGroup aria-label="outlined primary button group">
-                              <Button variant="contained"  style={{ backgroundColor:" #084d6e", color:"#fff"}}  href={'/admin/usuarios/editar/'+row._id}><AutorenewIcon /> Atualizar</Button>
-                            <Button variant="contained" color="secondary" onClick={() => handleDelete(row._id)}><ClearIcon /></Button>
-                        </ButtonGroup>
+                            <ButtonGroup aria-label="outlined primary button group">
+                              {getTipoUsuario() != 3 ? (
+                                <>
+                                  <Button variant="contained" style={{ backgroundColor: "#084d6e", color: "#fff" }} href={'/admin/usuarios/editar/' + row._id}>
+                                    <AutorenewIcon /> Atualizar
+                                  </Button>
+                                  <Button variant="contained" color="secondary" onClick={() => handleDelete(row._id)}>
+                                    <ClearIcon />
+                                  </Button>
+                                </>
+                              ) : null}
+                            </ButtonGroup>
                             </TableCell>
                           </TableRow>
                         ))}
