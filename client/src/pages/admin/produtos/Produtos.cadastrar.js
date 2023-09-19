@@ -114,7 +114,7 @@ export default function ProdutoCadastrar() {
                       required
                       id="precoProduto"
                       name="precoProduto"
-                      label="Preco Produto"
+                      label="Preço de venda"
                       fullWidth
                       autoComplete="precoProduto"
                       value={precoProduto}
@@ -141,7 +141,7 @@ export default function ProdutoCadastrar() {
                       required
                       id="valorProduto"
                       name="valorProduto"
-                      label="Valor Produto"
+                      label="Preço de compra"
                       fullWidth
                       autoComplete="valorProduto"
                       value={valorProduto}

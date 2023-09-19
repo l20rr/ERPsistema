@@ -94,7 +94,7 @@ function getTotal3(total, item) {
   return total + item.numero_produto;
 }
 
-// Calcular o total4 usando a função getTotal4
+// Calcular o total4 usando a função getTotal4 preco_produto = quanto € se vende
 var total4 = produtosFiltrados.reduce(getTotal4, 0);
 
 function getTotal4(total, item) {
@@ -133,10 +133,10 @@ function getTotal4(total, item) {
                        <li>Total de vendas</li>
                       </ul>
                    </div>
-                      <div className='squaree'> 
+               
                         <div id='graf'><Graf /></div>
             
-                      </div>
+                     
                    <div className='square das' id='luc'>
                      <ul>
                        <li className='numero'>{total4}€</li>
