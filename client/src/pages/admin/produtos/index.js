@@ -124,32 +124,31 @@ export default function Produtos() {
                         </TableRow>
                       </TableHead>
                       <TableBody className='prod'>
-                        {produtos.map((row) => (
-                        
-                          <TableRow key={row._id}>
-                            <TableCell component="th"  scope="row">
-                              <div><a id='nome' href={'/produtos/'+row._id}>{row.nome_produto}</a></div>
-                            </TableCell>
-                            <TableCell align="center">{row.numero_produto}</TableCell>
-                            <TableCell align="center">{row.preco_produto}</TableCell>
-                            <TableCell align="center">{row.qtd_produto - row.numero_produto}</TableCell>
-                            <TableCell align="right">
-                            <ButtonGroup aria-label="outlined primary button group">
-                              <Button variant="contained" style={{ backgroundColor: "#084d6e", color: "#fff" }} href={'/admin/produtos/editar/' + row._id}>
-                                <AutorenewIcon /> Vendas
-                              </Button>
-                              {getTipoUsuario() != 3 ? (
-                                <Button variant="contained" color="secondary" onClick={() => handleDelete(row._id)}>
-                                  <ClearIcon />
-                                </Button>
-                              ) : null}
-                            </ButtonGroup>
-                      
-      
-                            </TableCell>
-                          </TableRow>
-                          
-                        ))}
+                      {produtos
+                          .filter((row) => row.iduser === getIdUsuario())
+                          .map((row) => (
+                            <TableRow key={row._id}>
+                              <TableCell component="th" scope="row">
+                                <div><a id='nome' href={'/produtos/' + row._id}>{row.nome_produto}</a></div>
+                              </TableCell>
+                              <TableCell align="center">{row.numero_produto}</TableCell>
+                              <TableCell align="center">{row.preco_produto}</TableCell>
+                             
+                              <TableCell align="center">{row.qtd_produto - row.numero_produto}</TableCell>
+                              <TableCell align="right">
+                                <ButtonGroup aria-label="outlined primary button group">
+                                  <Button variant="contained" style={{ backgroundColor: "#084d6e", color: "#fff" }} href={'/admin/produtos/editar/' + row._id}>
+                                    <AutorenewIcon /> Vendas
+                                  </Button>
+                                  {getTipoUsuario() !== 3 ? (
+                                    <Button variant="contained" color="secondary" onClick={() => handleDelete(row._id)}>
+                                      <ClearIcon />
+                                    </Button>
+                                  ) : null}
+                                </ButtonGroup>
+                              </TableCell>
+                            </TableRow>
+                          ))}
                       </TableBody>
                     </Table>)}
                   </TableContainer>

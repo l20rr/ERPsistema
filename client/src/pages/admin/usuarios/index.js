@@ -113,12 +113,15 @@ export default function UsuariosListagem() {
                         </TableRow>
                       </TableHead>
                       <TableBody>
-                        {usuarios.map((row) => (
+                        {usuarios
+                         .filter((row) => row.iduser === getIdUsuario() || row._id === getIdUsuario())
+                        .map((row) => (
                           <TableRow key={row._id}>
                             <TableCell component="th" scope="row">
                               {row.nome_usuario}
                             </TableCell>
                             <TableCell align="center">{row.email_usuario}</TableCell>
+                           
                             <TableCell align="center"><Chip label={getNomeTipo(row.tipo_usuario)} color={getNomeTipoLabel(row.tipo_usuario)}/></TableCell>
                             <TableCell align="center">{new Date(row.createdAt).toLocaleString('pt-br')}</TableCell>
                             <TableCell align="right">

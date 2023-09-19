@@ -15,7 +15,7 @@ import '../../../App.css'
 import Graf from '../Grafico/Chart'
 
 import MenuAdmin from '../../../components/menu-admin';
-import { getTipoUsuario } from '../../../services/auth';
+import { getIdUsuario, getTipoUsuario } from '../../../services/auth';
 
 import { getDashboard } from '../../../services/auth';
 
@@ -71,35 +71,36 @@ export default function Dashboard() {
     
   },[]);
 
- 
-  var total = produtos.reduce(getTotal, 0);
-  function getTotal(total, item) {
+// Filtrar os produtos com iduser igual ao valor retornado por getIdUsuario()
+var produtosFiltrados = produtos.filter((item) => item.iduser === getIdUsuario());
+
+// Calcular o total usando a função getTotal
+var total = produtosFiltrados.reduce(getTotal, 0);
+
+function getTotal(total, item) {
   return total + (item.numero_produto * item.preco_produto);
- }
-
- 
- var total2 = produtos.reduce(getTotal2, 0);
- function getTotal2(total, item) {
-  return total + (item.qtd_produto - item.numero_produto)
 }
-var total3 = produtos.reduce(getTotal3, 0);
+
+// Calcular o total2 usando a função getTotal2
+var total2 = produtosFiltrados.reduce(getTotal2, 0);
+
+function getTotal2(total, item) {
+  return total + (item.qtd_produto - item.numero_produto);
+}
+
+// Calcular o total3 usando a função getTotal3
+var total3 = produtosFiltrados.reduce(getTotal3, 0);
+
 function getTotal3(total, item) {
- return total + (item.numero_produto )
+  return total + item.numero_produto;
 }
-var total4 = produtos.reduce(getTotal4, 0);
+
+// Calcular o total4 usando a função getTotal4
+var total4 = produtosFiltrados.reduce(getTotal4, 0);
+
 function getTotal4(total, item) {
- return total + ((item.preco_produto - item.valor_produto) * item.numero_produto  )
+  return total + ((item.preco_produto - item.valor_produto) * item.numero_produto);
 }
-
-  function getDashboard(){
-    if(getTipoUsuario()==='1'){
-      return <DashAdmin />
-    }else if( getTipoUsuario()==='2'){
-      return <Dashfuncionario />
-    }
-  }
-
-
 
   
   return (
