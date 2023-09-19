@@ -25,7 +25,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import api from '../../../services/api';
 
-import {setNomeUsuario, login, setIdUsuario, setTipoUsuario } from '../../../services/auth';
+import {setNomeUsuario, login, setIdUsuario, setTipoUsuario , setIdUser} from '../../../services/auth';
 
 function Copyright() {
   return (
@@ -77,6 +77,8 @@ export default function SignIn() {
                     setIdUsuario(res.data.id_client);
                     setNomeUsuario(res.data.user_name);
                     setTipoUsuario(res.data.user_type);
+                    setIdUser(res.data.iduser);
+                   
 
                     window.location.href= '/admin'
                 }else if(res.data.status===2){

@@ -25,7 +25,7 @@ import {getNomeTipo,getNomeTipoLabel} from '../../../function/static_data'
 import AddIcon from '@material-ui/icons/Add';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import ClearIcon from '@material-ui/icons/Clear';
-import { getIdUsuario, getTipoUsuario } from '../../../services/auth';
+import { getIdUser, getIdUsuario, getTipoUsuario } from '../../../services/auth';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,6 +62,7 @@ export default function UsuariosListagem() {
 
   useEffect(() =>{
     async function loadUsuarios(){
+      console.log(getIdUser())
       const response = await api.get("/api/usuarios");
       setUsuarios(response.data)
       setLoading(false);

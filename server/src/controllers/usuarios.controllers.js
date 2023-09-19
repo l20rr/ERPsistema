@@ -66,7 +66,8 @@ module.exports = {
                 token: token,
                 id_client: user._id,
                 user_name: user.nome_usuario,
-                user_type: user.tipo_usuario
+                user_type: user.tipo_usuario,
+                iduser: user.iduser
                 });
             } catch (err) {
                 console.error(err);
