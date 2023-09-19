@@ -115,8 +115,8 @@ export default function UsuariosListagem() {
                       </TableHead>
                       <TableBody>
                         {usuarios
-                         .filter((row) => row.iduser === getIdUsuario() || row._id === getIdUsuario())
-                        .map((row) => (
+                         .filter((row) => row.iduser === getIdUsuario() || row._id === getIdUsuario() || row.iduser === getIdUser() || row._id === getIdUser())
+                         .map((row) => (
                           <TableRow key={row._id}>
                             <TableCell component="th" scope="row">
                               {row.nome_usuario}

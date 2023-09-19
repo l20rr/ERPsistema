@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { getIdUsuario, getTipoUsuario } from '../../../services/auth';
+import { getIdUsuario, getTipoUsuario, getIdUser } from '../../../services/auth';
 import MenuAdmin from '../../../components/menu-admin';
 import {useParams} from 'react-router-dom'
 import '../../../App.css'
@@ -125,7 +125,7 @@ export default function Produtos() {
                       </TableHead>
                       <TableBody className='prod'>
                       {produtos
-                          .filter((row) => row.iduser === getIdUsuario())
+                         .filter((row) => row.iduser === getIdUsuario() || row._id === getIdUsuario() || row.iduser === getIdUser() || row._id === getIdUser())
                           .map((row) => (
                             <TableRow key={row._id}>
                               <TableCell component="th" scope="row">
@@ -140,7 +140,7 @@ export default function Produtos() {
                                   <Button variant="contained" style={{ backgroundColor: "#084d6e", color: "#fff" }} href={'/admin/produtos/editar/' + row._id}>
                                     <AutorenewIcon /> Vendas
                                   </Button>
-                                  {getTipoUsuario() !== 3 ? (
+                                  {getTipoUsuario() != 3 ? (
                                     <Button variant="contained" color="secondary" onClick={() => handleDelete(row._id)}>
                                       <ClearIcon />
                                     </Button>

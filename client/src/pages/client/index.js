@@ -167,7 +167,7 @@ function Home(){
       <div className="faq">
           <h3>F.A.Q.:</h3><br/>
       <div>
-      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} style={{backgroundColor:' rgb(54, 54, 54)', color:'#fff'}}>
+      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} style={{backgroundColor:'#fff', color:'#000', borderRadius:'3px' }}>
         <AccordionSummary
           
           aria-controls="panel1bh-content"
@@ -185,7 +185,7 @@ function Home(){
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')} style={{backgroundColor:' rgb(54, 54, 54)', color:'#fff'}}>
+      <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')} style={{backgroundColor:'#fff', color:'#000', borderRadius:'3px' }}>
         <AccordionSummary
         
           aria-controls="panel2bh-content"
@@ -204,7 +204,7 @@ function Home(){
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')} style={{backgroundColor:' rgb(54, 54, 54)', color:'#fff'}}>
+      <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')} style={{backgroundColor:'#fff', color:'#000', borderRadius:'3px' }}>
         <AccordionSummary
           
           aria-controls="panel3bh-content"
@@ -224,7 +224,7 @@ function Home(){
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')} style={{backgroundColor:'rgb(54, 54, 54)', color:'#fff'}}>
+      <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')} style={{backgroundColor:'#fff', color:'#000', borderRadius:'3px' }}>
         <AccordionSummary
           
           aria-controls="panel4bh-content"

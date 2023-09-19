@@ -15,12 +15,11 @@ import '../../../App.css'
 import Graf from '../Grafico/Chart'
 
 import MenuAdmin from '../../../components/menu-admin';
-import { getIdUsuario, getTipoUsuario } from '../../../services/auth';
+import { getIdUsuario, getTipoUsuario , getIdUser} from '../../../services/auth';
 
 import { getDashboard } from '../../../services/auth';
 
-import Dashfuncionario from './funcionario';
-import DashAdmin from './admin';
+
 
 
 import api from '../../../services/api';
@@ -72,7 +71,7 @@ export default function Dashboard() {
   },[]);
 
 // Filtrar os produtos com iduser igual ao valor retornado por getIdUsuario()
-var produtosFiltrados = produtos.filter((item) => item.iduser === getIdUsuario());
+var produtosFiltrados = produtos.filter((item) => item.iduser === getIdUsuario() ||  item.iduser === getIdUser() || item._id === getIdUser() || item._id === getIdUsuario());
 
 // Calcular o total usando a função getTotal
 var total = produtosFiltrados.reduce(getTotal, 0);
@@ -148,7 +147,9 @@ function getTotal4(total, item) {
                  <table className='tab'>
                  {console.log(produtos)}
                  <h4>Total de vendas por produto: </h4>
-                 {produtos.map((row) => (
+                 {produtos
+                   .filter((row) => row.iduser === getIdUsuario() || row._id === getIdUsuario() || row.iduser === getIdUser() || row._id === getIdUser()) 
+                   .map((row) => (
                     
                         <TableRow key={row._id} className='conteudo'>
                           <TableCell component="th"  scope="row">
